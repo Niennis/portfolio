@@ -2,14 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import { navLinks } from '@/constant/Constant'
 import Link from 'next/link'
-import { HiBars3BottomRight } from 'react-icons/hi2'
 import ThemeSwitch from '@/components/ThemeSwitch'
 
 type Props = {
   openNav: () => void
 }
 
-const Nav = ({ openNav }: Props) => {
+const Nav = ({  }: Props) => {
 
   const [navBg, setNavBg] = useState(false)
 

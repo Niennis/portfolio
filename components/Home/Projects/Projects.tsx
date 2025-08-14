@@ -18,11 +18,11 @@ const projectsData = [
     links: [
       {
         label: 'Sitio público',
-        url_deploy: 'https://zerus-udp.vercel.app/',
+        url: 'https://zerus-udp.vercel.app/',
       },
       {
         label: 'Sitio privado',
-        url_deploy: 'https://zerus-udp.vercel.app/',
+        url: 'https://zerus-udp.vercel.app/',
       }
     ]
   },
@@ -85,10 +85,10 @@ const Projects = () => {
                 </ul>
                 {/* BOTONES DE LINKS */}
                 {project.links && project.links.map((link, lidx) => (
-                  (link.url_deploy || link.url) && (
+                  (link.url) && (
                     <a
                       key={lidx}
-                      href={link.url_deploy || link.url}
+                      href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-sage transition-all duration-200 hover:text-white"
