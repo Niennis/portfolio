@@ -40,7 +40,7 @@ const projectsData = [
   {
     img: '/images/a.jpg',
     title: 'Laboratoria',
-    subtitle: 'Create dashboards that fit your workflow perfectly.',
+    subtitle: 'Labnotes.',
     desc: 'Personalize your analytics experience with widgets, themes, and layouts tailored to your needs.',
     features: [
       'Drag-and-drop widgets',
