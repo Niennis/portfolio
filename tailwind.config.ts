@@ -9,10 +9,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        darkteal: '#16404D',
+        /* darkteal: '#243642? */
+        lightteal: '#387478',
+        sage: '#629584',
+        lightsage: '#E2F1E7',
       },
     },
   },
+  darkMode: 'class',
   plugins: [],
 } satisfies Config;
