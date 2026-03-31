@@ -81,7 +81,7 @@ const projectsData = [
 
 const Projects = () => {
   return (
-    <div className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage'>
+    <div className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage' id='projects'>
       <div className='w-[95%] sm:w-[80%] mx-auto items-center grid grid-cols-1 lg:grid-cols-2 gap-10'>
         {projectsData.map((project, idx) => {
           const isImageLeft = idx % 2 === 0;

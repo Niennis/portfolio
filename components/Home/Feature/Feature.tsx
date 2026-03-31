@@ -39,7 +39,7 @@ const Feature = () => {
   ]
 
   return (
-    <div className='bg-lightsage pt-20 pb-20 text-black bg-gradient-to-r from-sage to-lightsage dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
+    <div id='skills' className='bg-lightsage pt-20 pb-20 text-black bg-gradient-to-r from-sage to-lightsage dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='w-[80%] mx-auto text-center'>
         <h2 className='mt-6 text-2xl md:text-3xl capitalize font-bold text-center dark:text-white playwrite-hu'>
           Tech Skills
