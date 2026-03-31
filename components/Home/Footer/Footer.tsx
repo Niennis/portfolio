@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { FaDribbble, FaLinkedin, FaGithub, } from 'react-icons/fa'
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { IoMdMail } from "react-icons/io";
 
 const Footer = () => {
