@@ -5,7 +5,7 @@ import { FaCheckCircle } from 'react-icons/fa'
 
 const personalProjectsData = [
   {
-    img: '/images/a.jpg',
+    img: '/images/convidatuespacio.jpeg',
     title: 'Convida tu Espacio',
     subtitle: 'Sitio web para emprendimiento de plantas.',
     desc: 'Sitio web completo para un emprendimiento local de plantas, construido con Next.js 15, TypeScript y Tailwind CSS; incluye catálogo navegable con rutas dinámicas, galería de diseños y formulario de contacto.',
@@ -27,7 +27,7 @@ const personalProjectsData = [
     ],
   },
   {
-    img: '/images/a.jpg',
+    img: '/images/amigurumi.jpeg',
     title: 'Generador de patrones de amigurumi',
     subtitle: 'Calculadora de patrones de crochet.',
     desc: 'Generador de patrones de amigurumi (crochet) que calcula aumentos y disminuciones a partir de formas geométricas y datos de muestra.',
@@ -49,7 +49,7 @@ const personalProjectsData = [
     ],
   },
   {
-    img: '/images/a.jpg',
+    img: '/images/mibiblioteca.jpeg',
     title: 'Mi Biblioteca',
     subtitle: 'App fullstack para gestionar libros.',
     desc: 'App fullstack para gestionar una biblioteca personal de libros, con autenticación, frontend en React 19 + TypeScript (Vite) y backend en Express + TypeScript con Prisma y Supabase.',
@@ -130,15 +130,14 @@ const PersonalProjects = () => {
 
               {/* IMAGEN */}
               <div
-                className={`order-2 ${isImageLeft ? 'md:order-1' : 'md:order-2'} mt-6`}
+                className={`order-2 ${isImageLeft ? 'md:order-1' : 'md:order-2'} mt-6 relative w-full h-[350px] md:h-[450px]`}
                 data-aos="fade-up"
                 data-aos-anchor-placement="top-center"
               >
                 <Image
                   src={project.img}
                   alt="image"
-                  width={500}
-                  height={500}
+                  fill
                   className="object-contain"
                 />
               </div>

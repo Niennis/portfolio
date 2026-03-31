@@ -4,7 +4,7 @@ import { FaCheckCircle } from 'react-icons/fa'
 
 const projectsData = [
   {
-    img: '/images/a.jpg',
+    img: '/images/psm-publico.jpeg',
     title: 'Zerus - UDP',
     subtitle: 'Landing page pública, y portal privado.',
     desc: 'Portal público informativo del área de salud mental de la Universidad Diego Portales, y portal privado para toma y gestión de horas de atención del área de salud mental.',
@@ -35,7 +35,7 @@ const projectsData = [
     ]
   },
   {
-    img: '/images/a.jpg',
+    img: '/images/bakeryqueen.jpeg',
     title: 'Laboratoria',
     subtitle: 'Burger Queen.',
     desc: 'Desarrollo de una API de toma de pedidos para un restaurant, y su aplicación en un frontal para tablet.',
@@ -57,7 +57,7 @@ const projectsData = [
     ],
   },
   {
-    img: '/images/a.jpg',
+    img: '/images/labnotes.jpeg',
     title: 'Laboratoria',
     subtitle: 'Labnotes.',
     desc: 'Página web para tomar notas, apuntes, crear listas..',
@@ -69,11 +69,11 @@ const projectsData = [
     links: [
       {
         label: 'Ir a despliegue',
-        url: 'https://zerus-udp.vercel.app/',
+        url: 'https://labnotes-beta.vercel.app',
       },
       {
         label: 'Código en github',
-        url: 'https://zerus-udp.vercel.app/',
+        url: 'https://github.com/Niennis/labnotes',
       }
     ],
   },
@@ -130,15 +130,14 @@ const Projects = () => {
 
               {/* IMAGEN */}
               <div
-                className={`order-2 ${isImageLeft ? 'md:order-1' : 'md:order-2'} mt-6`}
+                className={`order-2 ${isImageLeft ? 'md:order-1' : 'md:order-2'} mt-6 relative w-full h-[350px] md:h-[450px]`}
                 data-aos="fade-up"
                 data-aos-anchor-placement="top-center"
               >
                 <Image
                   src={project.img}
                   alt="image"
-                  width={500}
-                  height={500}
+                  fill
                   className="object-contain"
                 />
               </div>
