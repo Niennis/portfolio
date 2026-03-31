@@ -16,9 +16,10 @@ import { Providers } from "./providers";
 //   subsets: ["latin"],
 // });
 
-const font = Poppins({
+const poppins = Poppins({
   weight: ['100', '300', '400', '500', '700', '900', '200', '600', '800'],
-  subsets: ['latin']
+  subsets: ['latin'],
+  variable: '--font-poppins',
 })
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${font.className} antialiased`} >
+      <body className={`${poppins.className}  antialiased`} >
         <Providers>
           <ResponsiveNav />
           {children}

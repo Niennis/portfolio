@@ -17,12 +17,20 @@ const projectsData = [
     ],
     links: [
       {
-        label: 'Sitio público',
-        url: 'https://zerus-udp.vercel.app/',
+        label: 'Sitio público despliegue',
+        url: 'https://psm-public.vercel.app/',
       },
       {
-        label: 'Sitio privado',
-        url: 'https://zerus-udp.vercel.app/',
+        label: 'Sitio público código',
+        url: 'https://github.com/Niennis/psm-public',
+      },
+      {
+        label: 'Sitio privado despliegue',
+        url: 'https://psm-private.vercel.app/',
+      },
+      {
+        label: 'Sitio privado código',
+        url: 'https://github.com/Niennis/psm-private',
       }
     ]
   },
@@ -33,26 +41,47 @@ const projectsData = [
     desc: 'Desarrollo de una API de toma de pedidos para un restaurant, y su aplicación en un frontal para tablet.',
     features: [
       'Uso de Node y Express para creación de API',
+      'Guardado de datos en MongoDB',
       'CRUD de productos y pedidos',
       'Interfaz de usuario para tablet desarrollada con React',
+    ],
+    links: [
+      {
+        label: 'Ir a despliegue',
+        url: 'https://bakequeen.vercel.app/',
+      },
+      {
+        label: 'Código en github',
+        url: 'https://github.com/Niennis/bqapiclient',
+      },
     ],
   },
   {
     img: '/images/a.jpg',
     title: 'Laboratoria',
     subtitle: 'Labnotes.',
-    desc: 'Personalize your analytics experience with widgets, themes, and layouts tailored to your needs.',
+    desc: 'Página web para tomar notas, apuntes, crear listas..',
     features: [
-      'Drag-and-drop widgets',
-      'Theme support',
-      'Exportable reports',
+      'CRUD de notas, almacenadas en Firebase',
+      'Acceso a través de autenticación con Google',
+      ''
+    ],
+    links: [
+      {
+        label: 'Ir a despliegue',
+        url: 'https://zerus-udp.vercel.app/',
+      },
+      {
+        label: 'Código en github',
+        url: 'https://zerus-udp.vercel.app/',
+      }
     ],
   },
 ]
 
 const Projects = () => {
   return (
-    <div className='pt-24 pb-16 dark:bg-gray-900'>
+    <div className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage'>
       <div className='w-[95%] sm:w-[80%] mx-auto items-center grid grid-cols-1 lg:grid-cols-2 gap-10'>
         {projectsData.map((project, idx) => {
           const isImageLeft = idx % 2 === 0;
@@ -69,7 +98,7 @@ const Projects = () => {
                 <h2 className="text-base font-semibold text-sage">
                   {project.title}
                 </h2>
-                <h2 className="mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage">
+                <h2 className="mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage playwrite-hu">
                   {project.subtitle}
                 </h2>
                 <p className="mt-4 text-gray-600 text-sm font-medium leading-[2rem] dark:text-lightsage">

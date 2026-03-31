@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
-import { FaDribbble, FaFacebook, FaTwitter } from 'react-icons/fa'
+import { FaDribbble, FaLinkedin, FaGithub, } from 'react-icons/fa'
+import { IoMdMail } from "react-icons/io";
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
           {/* Logo and description */}
           <div>
             {/* Logo */}
-            <h2 className='text-xl md:text-2xl font-bold'>
+            <h2 className='text-xl md:text-2xl font-bold playwrite-hu'>
               <span className='text-3xl md:text-4xl text-sage'>E</span>stefania
             </h2>
             {/* Description */}
@@ -21,44 +22,44 @@ const Footer = () => {
           {/* About lins */}
           <div>
             <h3 className='text-lg font-semibold text-gray-800 dark:text-sage'>
-              About Us
+              Contacto
             </h3>
             <ul className='mt-4 space-y-4 text-sm font-semibold text-gray-500'>
-              <li>Support Center</li>
-              <li>Customer Support</li>
-              <li>About Us</li>
+              <li><IoMdMail className='text-gray-500 hover:text-gray-800 inline' /> estefania.osses.v@gmail.com</li>
+              <li>
+                <Link href='https://www.linkedin.com/in/estefania-osses-vera' className='text-gray-500 hover:text-gray-800' >
+                  <FaLinkedin className='inline mr-2 h-4' /> linkedin/estefania-osses-vera
+                </Link>
+              </li>
             </ul>
-          </div> 
+          </div>
           <div>
             <h3 className='text-lg font-semibold text-gray-800 dark:text-sage'>
-              About Us
+              
             </h3>
             <ul className='mt-4 space-y-4 text-sm font-semibold text-gray-500'>
-              <li>Support Center</li>
-              <li>Customer Support</li>
-              <li>About Us</li>
+              <li>
+                <Link href='https://github.com/Niennis' className='text-gray-500 hover:text-gray-800' >
+                  <FaGithub className='inline mr-2 h-4' /> github/Niennis
+                </Link>
+              </li>
             </ul>
-          </div> 
+          </div>
         </div>
         {/* Bottom section */}
         <div className='mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm'>
-          <p className='text-center md:text-left'>
+          <p className='text-center md:text-center'>
             Copyright @ 2025 Webdev. All rights reserved.
           </p>
-          <div className='flex items-center space-x-4 mt-4 md:mt-0'>
+          {/* <div className='flex items-center space-x-4 mt-4 md:mt-0'>
             <span>
               Social :
             </span>
-            <Link href='#' className='text-gray-500 hover:text-gray-800' >
-              <FaFacebook />
-            </Link>
-            <Link href='#' className='text-gray-500 hover:text-gray-800' >
-              <FaTwitter />
-            </Link>
+
             <Link href='#' className='text-gray-500 hover:text-gray-800' >
               <FaDribbble />
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

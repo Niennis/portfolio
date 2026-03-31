@@ -1,53 +1,47 @@
 import React from 'react'
-import { FaBook, FaCog, FaDesktop, FaHeadset, FaInfinity, FaLaptop, FaLayerGroup, FaMobileAlt, FaShieldAlt } from 'react-icons/fa'
+import { SiJavascript, SiHtml5, SiCss3, SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs } from "react-icons/si";
 
 const Feature = () => {
 
   const features = [
     {
-      icon: <FaLayerGroup className='text-red-500' />,
+      icon: <SiJavascript className='text-yellow-500' />,
       text: 'JavaScript',
     },
     {
-      icon: <FaLaptop className='text-blue-500' />,
+      icon: <SiHtml5 className='text-orange-500' />,
       text: 'HTML',
     },
     {
-      icon: <FaMobileAlt className='text-yellow-500' />,
+      icon: <SiCss3 className='text-blue-500' />,
       text: 'CSS',
     },
     {
-      icon: <FaDesktop className='text-purple-500' />,
+      icon: <SiReact className='text-cyan-500' />,
       text: 'React',
     },
     {
-      icon: <FaCog className='text-teal-500' />,
+      icon: <SiNextdotjs className='text-black' />,
       text: 'NextJS',
     },
     {
-      icon: <FaHeadset className='text-green-500' />,
+      icon: <SiMongodb className='text-green-500' />,
       text: 'MongoDB',
     },
     {
-      icon: <FaInfinity className='text-pink-500' />,
+      icon: <SiNodedotjs className='text-lime-500' />,
       text: 'NodeJS',
     },
     {
-      icon: <FaBook className='text-indigo-500' />,
+      icon: <SiExpress className='text-black-500' />,
       text: 'ExpressJS',
-    },
-    {
-      icon: <FaShieldAlt className='text-orange-500' />,
-      text: 'Enhanced Security',
     },
   ]
 
   return (
-    <div className='bg-lightsage pt-20 pb-20 text-black  
-    bg-gradient-to-r from-darkteal to-lightsage
-    dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
+    <div className='bg-lightsage pt-20 pb-20 text-black bg-gradient-to-r from-sage to-lightsage dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='w-[80%] mx-auto text-center'>
-        <h2 className='mt-6 text-2xl md:text-3xl capitalize font-bold text-center dark:text-white'>
+        <h2 className='mt-6 text-2xl md:text-3xl capitalize font-bold text-center dark:text-white playwrite-hu'>
           Tech Skills
         </h2>
         <div className='grid mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>

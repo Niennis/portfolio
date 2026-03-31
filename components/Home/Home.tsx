@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import Hero from './Hero/Hero'
 // import WhyChoose from './WhyChoose/WhyChoose'
 import Projects from './Projects/Projects'
+import PersonalProjects from './PersonalProjects/PersonalProjects'
 import Feature from './Feature/Feature'
 // import Review from './Review/Review'
 // import Price from './Price/Price'
@@ -25,8 +26,9 @@ const Home = () => {
   return (
     <div className="overflow-x-hidden">
       <Hero />
-      <Projects /> {/* <-- con animaciones */}
-      <Feature />  {/* <-- sin animaciones */}
+      <Projects />
+      <PersonalProjects />
+      <Feature />
     </div>
   );
 }

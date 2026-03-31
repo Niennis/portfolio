@@ -4,7 +4,7 @@ import React from 'react'
 const Hero = () => {
   return (
     <div className='w-full pt-[4vh] md:pt-[12vh] h-screen 
-     bg-gradient-to-l from-darkteal to-lightsage
+     bg-gradient-to-l from-sage to-lightsage
      dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='flex justify-center flex-col w-[90%] sm:w-[80%] h-full mx-auto'>
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-12'>
@@ -20,7 +20,7 @@ const Hero = () => {
             {/* Heading */}
             <h1
               data-aos='fade-up'
-              className='text-2xl sm:text-4xl md:text-5xl mt-6 mb-6 font-bold md:leading-[3rem] lg:leading-[3.5rem]'
+              className='text-2xl sm:text-4xl md:text-5xl mt-6 mb-6 font-bold md:leading-[3rem] lg:leading-[3.5rem] playwrite-hu'
             >
               Estefanía Osses Vera
             </h1>
@@ -38,10 +38,11 @@ const Hero = () => {
           {/* Image Content */}
           <div className='hidden lg:block' data-aos='fade-up' data-aos-delay='200' >
             <Image
-              src="/images/hero.png"
+              src="/images/me_02.jpg"
               alt='hero'
               width={700}
               height={700}
+              style={{borderRadius: '50%'}}
             />
           </div>
         </div>
