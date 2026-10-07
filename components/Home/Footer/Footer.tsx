@@ -50,7 +50,7 @@ const Footer = () => {
         {/* Bottom section */}
         <div className='mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-gray-600 dark:text-gray-400 text-sm'>
           <p className='text-center md:text-center'>
-            Copyright © 2025 Webdev. All rights reserved.
+            Copyright © 2025 Estefania Osses Vera. All rights reserved.
           </p>
           {/* <div className='flex items-center space-x-4 mt-4 md:mt-0'>
             <span>
