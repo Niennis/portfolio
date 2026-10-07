@@ -1,156 +1,191 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
+import { projectGroups, type Project } from '@/constant/projects'
 
-const projectsData = [
-  {
-    img: '/images/psm-publico.jpeg',
-    title: 'Zerus - UDP',
-    subtitle: 'Landing page pública, y portal privado.',
-    desc: 'Portal público informativo del área de salud mental de la Universidad Diego Portales, y portal privado para toma y gestión de horas de atención del área de salud mental.',
-    features: [
-      'Gestionar disponibilidad de horas',
-      'Gestión de profesionales',
-      'Gestión de pacientes',
-      'Gestión de horas de atención',
-      'Gestión de ficha clínica',
-    ],
-    links: [
-      {
-        label: 'Sitio público despliegue',
-        url: 'https://psm-public.vercel.app/',
-      },
-      {
-        label: 'Sitio público código',
-        url: 'https://github.com/Niennis/psm-public',
-      },
-      {
-        label: 'Sitio privado despliegue',
-        url: 'https://psm-private.vercel.app/',
-      },
-      {
-        label: 'Sitio privado código',
-        url: 'https://github.com/Niennis/psm-private',
-      }
-    ]
-  },
-  {
-    img: '/images/bakeryqueen.jpeg',
-    title: 'Laboratoria',
-    subtitle: 'Burger Queen.',
-    desc: 'Desarrollo de una API de toma de pedidos para un restaurant, y su aplicación en un frontal para tablet.',
-    features: [
-      'Uso de Node y Express para creación de API',
-      'Guardado de datos en MongoDB',
-      'CRUD de productos y pedidos',
-      'Interfaz de usuario para tablet desarrollada con React',
-    ],
-    links: [
-      {
-        label: 'Ir a despliegue',
-        url: 'https://bakequeen.vercel.app/',
-      },
-      {
-        label: 'Código en github',
-        url: 'https://github.com/Niennis/bqapiclient',
-      },
-    ],
-  },
-  {
-    img: '/images/labnotes.jpeg',
-    title: 'Laboratoria',
-    subtitle: 'Labnotes.',
-    desc: 'Página web para tomar notas, apuntes, crear listas..',
-    features: [
-      'CRUD de notas, almacenadas en Firebase',
-      'Acceso a través de autenticación con Google',
-    ],
-    links: [
-      {
-        label: 'Ir a despliegue',
-        url: 'https://labnotes-beta.vercel.app',
-      },
-      {
-        label: 'Código en github',
-        url: 'https://github.com/Niennis/labnotes',
-      }
-    ],
-  },
-]
+const allProjects = projectGroups.flatMap((group) => group.projects)
 
 const Projects = () => {
+  const [selectedId, setSelectedId] = useState(allProjects[0].id)
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+  const detailRef = useRef<HTMLDivElement>(null)
+  const scrollOnChange = useRef(false)
+
+  const selected = allProjects.find((project) => project.id === selectedId) ?? allProjects[0]
+
+  // Al elegir un proyecto con clic o toque, si su inicio no se ve en pantalla, se desplaza hasta él.
+  // Con las flechas del teclado no se desplaza, para no mover la página mientras se recorren las pestañas.
+  useEffect(() => {
+    if (!scrollOnChange.current) return
+    scrollOnChange.current = false
+
+    const detail = detailRef.current
+    if (!detail) return
+
+    // Se considera visible si empieza bajo el menú fijo y deja al menos ~150px para leer el comienzo
+    const navBottom = document.querySelector('header')?.firstElementChild?.getBoundingClientRect().bottom ?? 0
+    const { top } = detail.getBoundingClientRect()
+    if (top >= navBottom && top <= window.innerHeight - 150) return
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    detail.scrollIntoView?.({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' })
+  }, [selectedId])
+
+  const handleSelect = (id: string) => {
+    scrollOnChange.current = true
+    setSelectedId(id)
+  }
+
+  // Patrón de pestañas: las flechas recorren los proyectos del grupo, Inicio y Fin van al primero y al último
+  const handleKeyDown = (e: React.KeyboardEvent, projects: Project[], index: number) => {
+    let next: number
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        next = (index + 1) % projects.length
+        break
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        next = (index - 1 + projects.length) % projects.length
+        break
+      case 'Home':
+        next = 0
+        break
+      case 'End':
+        next = projects.length - 1
+        break
+      default:
+        return
+    }
+    e.preventDefault()
+    const project = projects[next]
+    setSelectedId(project.id)
+    tabRefs.current[project.id]?.focus()
+  }
+
   return (
     <section className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage' id='projects' aria-labelledby='projects-heading'>
-      <h2 id='projects-heading' className='sr-only'>Proyectos</h2>
-      <div className='w-[95%] sm:w-[80%] mx-auto items-center grid grid-cols-1 lg:grid-cols-2 gap-10'>
-        {projectsData.map((project, idx) => {
-          const isImageLeft = idx % 2 === 0;
+      <div className='w-[95%] sm:w-[80%] mx-auto'>
+        <h2 id='projects-heading' className='text-2xl md:text-3xl font-bold text-center dark:text-white playwrite-hu'>
+          Proyectos
+        </h2>
 
-          return (
-            <article
-              key={idx}
-              aria-labelledby={`project-${idx}`}
-              className="col-span-full grid grid-cols-1 md:grid-cols-2 items-center"
-            >
-              {/* TEXTO */}
-              <div
-                className={`p-6 order-1 ${isImageLeft ? 'md:order-2' : 'md:order-1'}`}
-              >
-                <h3 id={`project-${idx}`}>
-                  <span className="block text-base font-semibold text-lightteal dark:text-sage">
-                    {project.title}
-                  </span>
-                  <span className="block mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage playwrite-hu">
-                    {project.subtitle}
-                  </span>
-                </h3>
-                <p className="mt-4 text-gray-600 text-sm font-medium leading-[2rem] dark:text-lightsage">
-                  {project.desc}
+        {/* PESTAÑAS: un grupo por categoría */}
+        <div className='mt-12 space-y-6'>
+          {projectGroups.map((group) => {
+            const groupHasSelection = group.projects.some((project) => project.id === selectedId)
+
+            return (
+              <div key={group.id} className='md:flex md:items-start md:gap-6'>
+                <p
+                  id={`tabs-${group.id}`}
+                  className='mb-1 md:mb-0 md:w-48 md:pt-4 shrink-0 text-sm font-semibold text-lightteal dark:text-sage'
+                >
+                  {group.label}
                 </p>
-                <ul className="mt-7 space-y-2 text-gray-800 dark:text-sage">
-                  {project.features.map((feature, fidx) => (
-                    <li key={fidx} className="flex items-center font-semibold">
-                      <FaCheckCircle aria-hidden="true" className="text-sage mr-2 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                {/* BOTONES DE LINKS */}
-                {project.links && project.links.map((link, lidx) => (
-                  (link.url) && (
-                    <a
-                      key={lidx}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-lightteal transition-all duration-200 hover:text-white"
-                    >
-                      {link.label}
-                      <span className="sr-only"> (se abre en una pestaña nueva)</span>
-                    </a>
-                  )
-                ))}
-              </div>
+                {/* En celular: una fila que se desliza hacia el lado. El padding deja espacio para el indicador de foco */}
+                <div
+                  role='tablist'
+                  aria-labelledby={`tabs-${group.id}`}
+                  className='flex gap-3 overflow-x-auto -mx-[6px] px-[6px] py-2 sm:flex-wrap sm:overflow-visible'
+                >
+                  {group.projects.map((project, index) => {
+                    const isSelected = project.id === selectedId
+                    // Solo una pestaña por grupo recibe foco con Tab: la seleccionada o, si no hay, la primera
+                    const isTabStop = isSelected || (!groupHasSelection && index === 0)
 
-              {/* IMAGEN */}
-              <div
-                className={`order-2 ${isImageLeft ? 'md:order-1' : 'md:order-2'} mt-6 relative w-full h-[350px] md:h-[450px]`}
-                data-aos="fade-up"
-                data-aos-anchor-placement="top-center"
-              >
-                <Image
-                  src={project.img}
-                  alt={`Captura de pantalla del proyecto ${project.title}: ${project.subtitle}`}
-                  fill
-                  className="object-contain"
-                />
+                    return (
+                      <button
+                        key={project.id}
+                        ref={(el) => { tabRefs.current[project.id] = el }}
+                        type='button'
+                        role='tab'
+                        id={`tab-${project.id}`}
+                        aria-selected={isSelected}
+                        aria-controls='project-panel'
+                        tabIndex={isTabStop ? 0 : -1}
+                        onClick={() => handleSelect(project.id)}
+                        onKeyDown={(e) => handleKeyDown(e, group.projects, index)}
+                        className={`shrink-0 whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 ${isSelected
+                          ? 'bg-lightteal text-white shadow-md'
+                          : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                          }`}
+                      >
+                        {project.tabLabel ?? project.name}
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
-            </article>
-          );
-        })}
+            )
+          })}
+        </div>
+
+        {/* PROYECTO SELECCIONADO */}
+        <div
+          role='tabpanel'
+          id='project-panel'
+          aria-labelledby={`tab-${selected.id}`}
+          className='mt-12 grid grid-cols-1 md:grid-cols-2 items-start gap-6'
+        >
+          {/* TEXTO */}
+          <div ref={detailRef} className='p-6 md:order-2'>
+            {selected.org && (
+              <p className='text-base font-semibold text-lightteal dark:text-sage'>
+                {selected.org}
+              </p>
+            )}
+            <h3 className={`${selected.org ? 'mt-4' : ''} text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage playwrite-hu`}>
+              {selected.name}
+            </h3>
+            {selected.subtitle && (
+              <p className='mt-4 text-gray-800 font-semibold dark:text-lightsage'>
+                {selected.subtitle}
+              </p>
+            )}
+            <p className='mt-4 text-gray-600 text-sm font-medium leading-[2rem] dark:text-lightsage'>
+              {selected.desc}
+            </p>
+            <ul className='mt-7 space-y-2 text-gray-800 dark:text-sage'>
+              {selected.features.filter(Boolean).map((feature) => (
+                <li key={feature} className='flex items-center font-semibold'>
+                  <FaCheckCircle aria-hidden='true' className='text-sage mr-2 shrink-0' />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            {/* BOTONES DE LINKS */}
+            {selected.links.map((link) => (
+              link.url && (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-lightteal transition-all duration-200 hover:text-white'
+                >
+                  {link.label}
+                  <span className='sr-only'> (se abre en una pestaña nueva)</span>
+                </a>
+              )
+            ))}
+          </div>
+
+          {/* IMAGEN */}
+          <div className='md:order-1 md:mt-6 relative w-full h-[350px] md:h-[450px]'>
+            <Image
+              key={selected.id}
+              src={selected.img}
+              alt={`Captura de pantalla del proyecto ${selected.name}`}
+              fill
+              className='object-contain md:object-top'
+            />
+          </div>
+        </div>
       </div>
     </section>
   )
 }
 
-export default Projects;
+export default Projects

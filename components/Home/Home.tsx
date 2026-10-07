@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import Hero from './Hero/Hero'
 import Projects from './Projects/Projects'
-import PersonalProjects from './PersonalProjects/PersonalProjects'
 import Feature from './Feature/Feature'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -27,7 +26,6 @@ const Home = () => {
     <div className="overflow-x-hidden">
       <Hero />
       <Projects />
-      <PersonalProjects />
       <Feature />
     </div>
   );
