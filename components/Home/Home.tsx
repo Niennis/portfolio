@@ -19,8 +19,10 @@ const Home = () => {
       once: true,
       anchorPlacement: 'top-bottom',
       offset: 100,
-      // Sin animaciones si la persona pidió reducir el movimiento en su sistema
-      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      // Sin animaciones en celular (< 768px) ni si la persona pidió reducir el movimiento en su sistema
+      disable: () =>
+        window.matchMedia('(max-width: 767px)').matches ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     });
     AOS.refresh();
   }, []);

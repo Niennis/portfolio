@@ -3,10 +3,10 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <section id='about' className='w-full pt-[4vh] md:pt-[12vh] min-h-screen 
+    <section id='about' className='w-full pt-[12vh] pb-12 min-h-screen flex flex-col justify-center
      bg-gradient-to-l from-sage to-lightsage
      dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
-      <div className='flex justify-center flex-col w-[90%] sm:w-[80%] h-full mx-auto'>
+      <div className='w-[90%] sm:w-[80%] mx-auto'>
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-12'>
           {/* Text Content */}
           <div>
