@@ -116,15 +116,17 @@ const PersonalProjects = () => {
                   ))}
                 </ul>
                 {project.links && project.links.map((link, lidx) => (
-                  <a
-                    key={lidx}
-                    href={link.url || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-sage transition-all duration-200 hover:text-white"
-                  >
-                    {link.label}
-                  </a>
+                  (link.url) && (
+                    <a
+                      key={lidx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-sage transition-all duration-200 hover:text-white"
+                    >
+                      {link.label}
+                    </a>
+                  )
                 ))}
               </div>
 
