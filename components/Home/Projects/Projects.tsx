@@ -64,7 +64,6 @@ const projectsData = [
     features: [
       'CRUD de notas, almacenadas en Firebase',
       'Acceso a través de autenticación con Google',
-      ''
     ],
     links: [
       {
