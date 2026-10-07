@@ -1,0 +1,11 @@
+# No instalar versiones publicadas hace menos de 1 día (en minutos)
+minimumReleaseAge: 1440
+
+# Scripts de instalación revisados y bloqueados a propósito:
+# - core-js: solo muestra un mensaje
+# - sharp: usa el binario precompilado (@img/sharp-*)
+# - unrs-resolver: solo verifica el binario
+ignoredBuiltDependencies:
+  - core-js
+  - sharp
+  - unrs-resolver
