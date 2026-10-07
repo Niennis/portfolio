@@ -1,13 +1,9 @@
 'use client'
 import React, { useEffect } from 'react'
 import Hero from './Hero/Hero'
-// import WhyChoose from './WhyChoose/WhyChoose'
 import Projects from './Projects/Projects'
 import PersonalProjects from './PersonalProjects/PersonalProjects'
 import Feature from './Feature/Feature'
-// import Review from './Review/Review'
-// import Price from './Price/Price'
-// import Offer from './Offer/Offer'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
