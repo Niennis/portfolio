@@ -5,6 +5,54 @@ import { FaCheckCircle } from 'react-icons/fa'
 
 const personalProjectsData = [
   {
+    img: '/images/avisodeofertas.png',
+    title: 'Alerta de ofertas',
+    subtitle: 'Seguimiento de precios en tiendas en línea.',
+    desc: 'App fullstack que sigue productos de tiendas en línea y avisa por email cuando bajan de precio, cuando la oferta es real o cuando vuelven a tener stock. Construida con Next.js 16, TypeScript, Drizzle ORM y Postgres (Neon), con arquitectura hexagonal.',
+    features: [
+      'Lectura de precios en tiendas Shopify, WooCommerce y más',
+      'Historial de precios y detección de ofertas dudosas',
+      'Avisos por email con revisiones programadas (Vercel Cron + GitHub Actions)',
+      'Cuentas con invitación y app instalable (PWA)',
+      'Next.js 16 + TypeScript + Drizzle ORM + Neon',
+      'Tests en Vitest',
+    ],
+    links: [
+      {
+        label: 'Ver despliegue',
+        url: 'https://avisodeofertas.vercel.app', // TODO: URL del despliegue (si es pública)
+      },
+      {
+        label: 'Código en GitHub',
+        url: 'https://github.com/Niennis/avisodeofertas',
+      },
+    ],
+  },
+  {
+    img: '/images/onemorerow.png',
+    title: 'Una vuelta más',
+    subtitle: 'Timer Pomodoro personalizable.',
+    desc: 'Timer Pomodoro con fondo personalizable, alarmas configurables y reproductor de Spotify/YouTube embebido, con cuenta opcional para sincronizar la configuración entre dispositivos. Construido con React 19, Vite, Tailwind CSS v4 y Supabase.',
+    features: [
+      'Ciclos de enfoque y descanso configurables',
+      'Fondo personalizable con contraste automático del texto',
+      'Alarmas sintetizadas con Web Audio API',
+      'Sincronización opcional con Supabase (Auth + Postgres + Storage)',
+      'React 19 + Vite + Tailwind CSS v4',
+      'Tests en Vitest',
+    ],
+    links: [
+      {
+        label: 'Ver despliegue',
+        url: 'https://onemorerow.vercel.app', // TODO: URL del despliegue
+      },
+      {
+        label: 'Código en GitHub',
+        url: 'https://github.com/Niennis/onemorerow',
+      },
+    ],
+  },
+  {
     img: '/images/convidatuespacio.jpeg',
     title: 'Convida tu Espacio',
     subtitle: 'Sitio web para emprendimiento de plantas.',
