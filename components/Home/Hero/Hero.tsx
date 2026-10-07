@@ -3,7 +3,7 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div id='about' className='w-full pt-[4vh] md:pt-[12vh] h-screen 
+    <section id='about' className='w-full pt-[4vh] md:pt-[12vh] min-h-screen 
      bg-gradient-to-l from-sage to-lightsage
      dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='flex justify-center flex-col w-[90%] sm:w-[80%] h-full mx-auto'>
@@ -12,7 +12,7 @@ const Hero = () => {
           <div>
             {/* Top Box */}
             <div className='w-fit py-1.5 px-2 md:px-5 rounded-full shadow-md flex items-center space-x-3 bg-darkteal text-white dark:bg-lightsage dark:text-black'>
-              <div className='px-3 py-1 md:px-5 md:py-1 rounded-full bg-sage md:text-base sm:text-sm text-xs text-white'>
+              <div className='px-3 py-1 md:px-5 md:py-1 rounded-full bg-lightteal md:text-base sm:text-sm text-xs text-white'>
                 Front End
               </div>
               <p className='text-xs sm:text-sm'>Developer</p>
@@ -39,7 +39,7 @@ const Hero = () => {
           <div className='hidden lg:block' data-aos='fade-up' data-aos-delay='200' >
             <Image
               src="/images/me_02.jpg"
-              alt='hero'
+              alt='Fotografía de Estefanía Osses Vera'
               width={700}
               height={700}
               style={{borderRadius: '50%'}}
@@ -47,7 +47,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

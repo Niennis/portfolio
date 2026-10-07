@@ -33,11 +33,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className={`${poppins.className}  antialiased`} >
         <Providers>
+          {/* Enlace para saltar el menú con teclado; solo aparece al recibir foco */}
+          <a
+            href='#contenido'
+            className='sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[20000] focus:px-6 focus:py-3 focus:rounded-full focus:bg-white focus:text-gray-900 focus:font-semibold focus:shadow-md'
+          >
+            Saltar al contenido principal
+          </a>
           <ResponsiveNav />
-          {children}
+          <main id='contenido'>
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>

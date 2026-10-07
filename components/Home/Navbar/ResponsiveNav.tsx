@@ -1,23 +1,27 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import Nav from './Nav'
 import MobileNav from './MobileNav'
 
 const ResponsiveNav = () => {
   const [showNav, setShowNav] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+
   const handleNavShow = () => {
     setShowNav(true)
   }
 
-  const handleNavHide = () => {
+  // Al cerrar sin elegir un link, el foco vuelve al botón del menú
+  const handleNavHide = useCallback((returnFocus = true) => {
     setShowNav(false)
-  }
+    if (returnFocus) menuButtonRef.current?.focus()
+  }, [])
 
   return (
-    <div>
-      <Nav openNav={handleNavShow} />
-      <MobileNav showNav={showNav} closeNav={handleNavHide}/>
-    </div>
+    <header>
+      <Nav openNav={handleNavShow} showNav={showNav} menuButtonRef={menuButtonRef} />
+      <MobileNav showNav={showNav} closeNav={handleNavHide} />
+    </header>
   )
 }
 

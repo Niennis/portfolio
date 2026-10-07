@@ -31,6 +31,34 @@ html, body, #__next {
   height: auto;
 }
 
+/* Evita que el menú fijo tape el inicio de cada sección al usar los links del menú */
+html {
+  scroll-padding-top: 12vh;
+}
+
+/* Indicador de foco visible para quienes navegan con teclado */
+:focus-visible {
+  outline: 3px solid #387478;
+  outline-offset: 3px;
+}
+
+.dark :focus-visible {
+  outline-color: #E2F1E7;
+}
+
+/* Respeta la preferencia del sistema de reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   overflow-y: auto;   /* asegura scroll vertical */
   overflow-x: hidden; /* solo oculta desbordes horizontales */

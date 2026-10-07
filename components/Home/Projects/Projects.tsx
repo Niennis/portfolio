@@ -80,33 +80,37 @@ const projectsData = [
 
 const Projects = () => {
   return (
-    <div className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage' id='projects'>
+    <section className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage' id='projects' aria-labelledby='projects-heading'>
+      <h2 id='projects-heading' className='sr-only'>Proyectos</h2>
       <div className='w-[95%] sm:w-[80%] mx-auto items-center grid grid-cols-1 lg:grid-cols-2 gap-10'>
         {projectsData.map((project, idx) => {
           const isImageLeft = idx % 2 === 0;
 
           return (
-            <div
+            <article
               key={idx}
+              aria-labelledby={`project-${idx}`}
               className="col-span-full grid grid-cols-1 md:grid-cols-2 items-center"
             >
               {/* TEXTO */}
               <div
                 className={`p-6 order-1 ${isImageLeft ? 'md:order-2' : 'md:order-1'}`}
               >
-                <h2 className="text-base font-semibold text-sage">
-                  {project.title}
-                </h2>
-                <h2 className="mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage playwrite-hu">
-                  {project.subtitle}
-                </h2>
+                <h3 id={`project-${idx}`}>
+                  <span className="block text-base font-semibold text-lightteal dark:text-sage">
+                    {project.title}
+                  </span>
+                  <span className="block mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage playwrite-hu">
+                    {project.subtitle}
+                  </span>
+                </h3>
                 <p className="mt-4 text-gray-600 text-sm font-medium leading-[2rem] dark:text-lightsage">
                   {project.desc}
                 </p>
                 <ul className="mt-7 space-y-2 text-gray-800 dark:text-sage">
                   {project.features.map((feature, fidx) => (
                     <li key={fidx} className="flex items-center font-semibold">
-                      <FaCheckCircle className="text-sage mr-2" />
+                      <FaCheckCircle aria-hidden="true" className="text-sage mr-2 shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -119,9 +123,10 @@ const Projects = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-sage transition-all duration-200 hover:text-white"
+                      className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-lightteal transition-all duration-200 hover:text-white"
                     >
                       {link.label}
+                      <span className="sr-only"> (se abre en una pestaña nueva)</span>
                     </a>
                   )
                 ))}
@@ -135,16 +140,16 @@ const Projects = () => {
               >
                 <Image
                   src={project.img}
-                  alt="image"
+                  alt={`Captura de pantalla del proyecto ${project.title}: ${project.subtitle}`}
                   fill
                   className="object-contain"
                 />
               </div>
-            </div>
+            </article>
           );
         })}
       </div>
-    </div>
+    </section>
   )
 }
 

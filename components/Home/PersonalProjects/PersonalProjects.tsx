@@ -76,41 +76,45 @@ const PersonalProjects = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage'>
+    <section className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage' aria-labelledby='personal-projects-heading'>
       <div className='w-[80%] mx-auto text-center'>
-        <h2 className='mt-6 text-2xl md:text-3xl capitalize font-bold text-center dark:text-white playwrite-hu'>
+        <h2 id='personal-projects-heading' className='mt-6 text-2xl md:text-3xl capitalize font-bold text-center dark:text-white playwrite-hu'>
           Proyectos Personales
         </h2>
         <button
+          type='button'
           onClick={() => setIsOpen(!isOpen)}
-          className='mt-8 px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-sage hover:text-white transition-all duration-200'
+          aria-expanded={isOpen}
+          aria-controls='personal-projects-list'
+          className='mt-8 px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-lightteal hover:text-white transition-all duration-200'
         >
           {isOpen ? 'Ocultar proyectos' : 'Mostrar proyectos personales'}
         </button>
       </div>
-      {isOpen && <div className='w-[95%] sm:w-[80%] mx-auto items-center grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16'>
+      {isOpen && <div id='personal-projects-list' className='w-[95%] sm:w-[80%] mx-auto items-center grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16'>
         {personalProjectsData.map((project, idx) => {
           const isImageLeft = idx % 2 === 0;
 
           return (
-            <div
+            <article
               key={idx}
+              aria-labelledby={`personal-project-${idx}`}
               className="col-span-full grid grid-cols-1 md:grid-cols-2 items-center"
             >
               {/* TEXTO */}
               <div
                 className={`p-6 order-1 ${isImageLeft ? 'md:order-2' : 'md:order-1'}`}
               >
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage playwrite-hu">
+                <h3 id={`personal-project-${idx}`} className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-lightsage playwrite-hu">
                   {project.title}
-                </h2>
+                </h3>
                 <p className="mt-4 text-gray-600 text-sm font-medium leading-[2rem] dark:text-lightsage">
                   {project.desc}
                 </p>
                 <ul className="mt-7 space-y-2 text-gray-800 dark:text-sage">
                   {project.features.map((feature, fidx) => (
                     <li key={fidx} className="flex items-center font-semibold">
-                      <FaCheckCircle className="text-sage mr-2" />
+                      <FaCheckCircle aria-hidden="true" className="text-sage mr-2 shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -122,9 +126,10 @@ const PersonalProjects = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-sage transition-all duration-200 hover:text-white"
+                      className="mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-lightteal transition-all duration-200 hover:text-white"
                     >
                       {link.label}
+                      <span className="sr-only"> (se abre en una pestaña nueva)</span>
                     </a>
                   )
                 ))}
@@ -138,16 +143,16 @@ const PersonalProjects = () => {
               >
                 <Image
                   src={project.img}
-                  alt="image"
+                  alt={`Captura de pantalla del proyecto ${project.title}`}
                   fill
                   className="object-contain"
                 />
               </div>
-            </div>
+            </article>
           );
         })}
       </div>}
-    </div>
+    </section>
   )
 }
 
