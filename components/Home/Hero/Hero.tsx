@@ -3,7 +3,7 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <section id='about' className='w-full pt-[12vh] pb-12 min-h-screen flex flex-col justify-center
+    <section id='about' className='w-full pt-[calc(var(--nav-height)+1.5rem)] pb-12 min-h-screen flex flex-col justify-center
      bg-gradient-to-l from-sage to-lightsage
      dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='w-[90%] sm:w-[80%] mx-auto'>

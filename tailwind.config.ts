@@ -7,6 +7,15 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    // Cortes en em (16px = 1em): con la letra del navegador agrandada,
+    // la página pasa antes al diseño de celular, que tiene espacio para letra grande
+    screens: {
+      sm: '40em',
+      md: '48em',
+      lg: '64em',
+      xl: '80em',
+      '2xl': '96em',
+    },
     extend: {
       colors: {
         darkteal: '#16404D',

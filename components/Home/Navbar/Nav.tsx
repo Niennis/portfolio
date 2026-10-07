@@ -29,14 +29,14 @@ const Nav = ({ openNav, showNav, menuButtonRef }: Props) => {
   }, [])
 
   return (
-    <div className={`fixed ${navBg ? 'bg-white shadow-md dark:bg-darkteal' : 'fixed'} w-full transition-all duration-200 h-[12vh] z-[1000]`}>
+    <div className={`fixed ${navBg ? 'bg-white shadow-md dark:bg-darkteal' : 'fixed'} w-full transition-all duration-200 h-[var(--nav-height)] z-[1000]`}>
       <div className='flex items-center h-full justify-between w-[90%] xl:w-[80%] mx-auto'>
-        {/* LOGO */}
-        <p className='text-xl md:text-2xl font-bold playwrite-hu'>
+        {/* LOGO: con letra muy grande se recorta para que los botones siempre quepan */}
+        <p className='min-w-0 overflow-x-clip whitespace-nowrap text-ellipsis text-xl md:text-2xl font-bold playwrite-hu'>
           <span className='text-3xl md:text-4xl text-sage font-normal tracking-wide '>E</span>stefania
         </p>
         {/* NavLinks */}
-        <div className='flex items-center space-x-6 lg:space-x-10'>
+        <div className='flex shrink-0 items-center space-x-3 sm:space-x-6 lg:space-x-10'>
           <nav aria-label='Principal' className='hidden lg:block'>
             <ul className='flex items-center space-x-10'>
               {navLinks.map((link) => (

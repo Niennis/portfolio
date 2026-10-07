@@ -26,7 +26,7 @@ const Footer = () => {
             </h2>
             <ul className='mt-4 space-y-4 text-sm font-semibold text-gray-500 dark:text-gray-400'>
               <li>
-                <a href='mailto:estefania.osses.v@gmail.com' className='hover:text-gray-800 dark:hover:text-white'>
+                <a href='mailto:estefania.osses.v@gmail.com' className='hover:text-gray-800 dark:hover:text-white [overflow-wrap:anywhere]'>
                   <IoMdMail aria-hidden='true' className='inline mr-2 h-4' /> estefania.osses.v@gmail.com
                 </a>
               </li>

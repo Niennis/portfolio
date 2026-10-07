@@ -19,9 +19,9 @@ const Home = () => {
       once: true,
       anchorPlacement: 'top-bottom',
       offset: 100,
-      // Sin animaciones en celular (< 768px) ni si la persona pidió reducir el movimiento en su sistema
+      // Sin animaciones en celular (< 48em, o sea 768px con la letra normal) ni si la persona pidió reducir el movimiento en su sistema
       disable: () =>
-        window.matchMedia('(max-width: 767px)').matches ||
+        window.matchMedia('(max-width: 47.99em)').matches ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     });
     AOS.refresh();

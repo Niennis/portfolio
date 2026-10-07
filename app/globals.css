@@ -31,9 +31,14 @@ html, body, #__next {
   height: auto;
 }
 
+/* Altura del menú fijo: 12% de la pantalla, pero nunca menos de lo que necesita su contenido */
+:root {
+  --nav-height: max(12vh, 4.5rem);
+}
+
 /* Evita que el menú fijo tape el inicio de cada sección al usar los links del menú */
 html {
-  scroll-padding-top: 12vh;
+  scroll-padding-top: var(--nav-height);
 }
 
 /* Indicador de foco visible para quienes navegan con teclado */
