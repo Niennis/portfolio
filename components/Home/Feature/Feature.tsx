@@ -1,7 +1,12 @@
 import React from 'react'
 import { SiJavascript, SiHtml5, SiCss3, SiReact, SiMongodb, SiNodedotjs, SiExpress, SiNextdotjs } from "react-icons/si";
+import type { Dictionary } from '@/i18n/getDictionary'
 
-const Feature = () => {
+type Props = {
+  dict: Dictionary['skills']
+}
+
+const Feature = ({ dict }: Props) => {
 
   const features = [
     {
@@ -42,7 +47,7 @@ const Feature = () => {
     <section id='skills' className='bg-lightsage pt-20 pb-20 text-black bg-gradient-to-r from-sage to-lightsage dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='w-[80%] mx-auto text-center'>
         <h2 className='mt-6 text-2xl md:text-3xl capitalize font-bold text-center dark:text-white playwrite-hu'>
-          Tech Skills
+          {dict.heading}
         </h2>
         <ul className='grid mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {features.map((feature, index) => (

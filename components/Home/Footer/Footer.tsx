@@ -2,8 +2,13 @@ import Link from 'next/link'
 import React from 'react'
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { IoMdMail } from "react-icons/io";
+import type { Dictionary } from '@/i18n/getDictionary'
 
-const Footer = () => {
+type Props = {
+  dict: Dictionary['footer']
+}
+
+const Footer = ({ dict }: Props) => {
   return (
     <footer id='contact' className='bg-white py-10 dark:bg-gray-900'>
       <div className='w-[90%] mx-auto px-4 sm:px-6 lg:px-8'>
@@ -16,13 +21,13 @@ const Footer = () => {
             </p>
             {/* Description */}
             <p className='mt-4 text-sm font-medium leading-[2rem] w-[80%] text-gray-600 dark:text-gray-400'>
-              Front End Developer
+              {dict.role}
             </p>
           </div>
           {/* About lins */}
           <div>
             <h2 className='text-lg font-semibold text-gray-800 dark:text-sage'>
-              Contacto
+              {dict.contact}
             </h2>
             <ul className='mt-4 space-y-4 text-sm font-semibold text-gray-500 dark:text-gray-400'>
               <li>
@@ -50,7 +55,7 @@ const Footer = () => {
         {/* Bottom section */}
         <div className='mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-gray-600 dark:text-gray-400 text-sm'>
           <p className='text-center md:text-center'>
-            Copyright © 2025 Estefania Osses Vera. All rights reserved.
+            Copyright © 2025 Estefania Osses Vera. {dict.rights}
           </p>
           {/* <div className='flex items-center space-x-4 mt-4 md:mt-0'>
             <span>

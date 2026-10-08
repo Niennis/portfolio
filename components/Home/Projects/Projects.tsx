@@ -2,11 +2,16 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
-import { projectGroups, type Project } from '@/constant/projects'
+import type { Project, ProjectGroup } from '@/constant/projects'
+import type { Dictionary } from '@/i18n/getDictionary'
 
-const allProjects = projectGroups.flatMap((group) => group.projects)
+type Props = {
+  groups: ProjectGroup[]
+  dict: Dictionary['projects']
+}
 
-const Projects = () => {
+const Projects = ({ groups, dict }: Props) => {
+  const allProjects = groups.flatMap((group) => group.projects)
   const [selectedId, setSelectedId] = useState(allProjects[0].id)
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({})
   const detailRef = useRef<HTMLDivElement>(null)
@@ -68,12 +73,12 @@ const Projects = () => {
     <section className='pt-24 pb-16 dark:bg-gray-900 bg-lightsage' id='projects' aria-labelledby='projects-heading'>
       <div className='w-[95%] sm:w-[80%] mx-auto'>
         <h2 id='projects-heading' className='text-2xl md:text-3xl font-bold text-center dark:text-white playwrite-hu'>
-          Proyectos
+          {dict.heading}
         </h2>
 
         {/* PESTAÑAS: un grupo por categoría */}
         <div className='mt-12 space-y-6'>
-          {projectGroups.map((group) => {
+          {groups.map((group) => {
             const groupHasSelection = group.projects.some((project) => project.id === selectedId)
 
             return (
@@ -166,7 +171,7 @@ const Projects = () => {
                   className='mt-8 mr-4 inline-block px-8 py-3 bg-gray-100 text-gray-800 font-semibold rounded-full hover:bg-lightteal transition-all duration-200 hover:text-white'
                 >
                   {link.label}
-                  <span className='sr-only'> (se abre en una pestaña nueva)</span>
+                  <span className='sr-only'> {dict.newTab}</span>
                 </a>
               )
             ))}
@@ -177,7 +182,7 @@ const Projects = () => {
             <Image
               key={selected.id}
               src={selected.img}
-              alt={`Captura de pantalla del proyecto ${selected.name}`}
+              alt={`${dict.screenshotAlt} ${selected.name}`}
               fill
               className='object-contain md:object-top'
             />

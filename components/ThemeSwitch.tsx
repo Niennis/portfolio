@@ -4,7 +4,11 @@ import { FiSun, FiMoon } from "react-icons/fi"
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 
-export default function ThemeSwitch() {
+type Props = {
+  labels: { toLight: string, toDark: string }
+}
+
+export default function ThemeSwitch({ labels }: Props) {
   const [mounted, setMounted] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
 
@@ -19,7 +23,7 @@ export default function ThemeSwitch() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+      aria-label={isDark ? labels.toLight : labels.toDark}
       className="w-8 h-8 flex items-center justify-center rounded-md"
     >
       {isDark ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}

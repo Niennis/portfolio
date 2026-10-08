@@ -5,8 +5,15 @@ import Projects from './Projects/Projects'
 import Feature from './Feature/Feature'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import type { Dictionary } from '@/i18n/getDictionary'
+import type { ProjectGroup } from '@/constant/projects'
 
-const Home = () => {
+type Props = {
+  dict: Dictionary
+  projectGroups: ProjectGroup[]
+}
+
+const Home = ({ dict, projectGroups }: Props) => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -24,9 +31,9 @@ const Home = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <Hero />
-      <Projects />
-      <Feature />
+      <Hero dict={dict.hero} />
+      <Projects groups={projectGroups} dict={dict.projects} />
+      <Feature dict={dict.skills} />
     </div>
   );
 }

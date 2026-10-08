@@ -2,8 +2,13 @@
 import React, { useCallback, useRef, useState } from 'react'
 import Nav from './Nav'
 import MobileNav from './MobileNav'
+import type { Dictionary } from '@/i18n/getDictionary'
 
-const ResponsiveNav = () => {
+type Props = {
+  dict: Dictionary['nav']
+}
+
+const ResponsiveNav = ({ dict }: Props) => {
   const [showNav, setShowNav] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -19,8 +24,8 @@ const ResponsiveNav = () => {
 
   return (
     <header>
-      <Nav openNav={handleNavShow} showNav={showNav} menuButtonRef={menuButtonRef} />
-      <MobileNav showNav={showNav} closeNav={handleNavHide} />
+      <Nav openNav={handleNavShow} showNav={showNav} menuButtonRef={menuButtonRef} dict={dict} />
+      <MobileNav showNav={showNav} closeNav={handleNavHide} dict={dict} />
     </header>
   )
 }

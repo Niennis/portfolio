@@ -1,7 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
+import type { Dictionary } from '@/i18n/getDictionary'
 
-const Hero = () => {
+type Props = {
+  dict: Dictionary['hero']
+}
+
+const Hero = ({ dict }: Props) => {
   return (
     <section id='about' className='w-full pt-[calc(var(--nav-height)+1.5rem)] pb-12 min-h-screen flex flex-col justify-center
      bg-gradient-to-l from-sage to-lightsage
@@ -13,9 +18,9 @@ const Hero = () => {
             {/* Top Box */}
             <div className='w-fit py-1.5 px-2 md:px-5 rounded-full shadow-md flex items-center space-x-3 bg-darkteal text-white dark:bg-lightsage dark:text-black'>
               <div className='px-3 py-1 md:px-5 md:py-1 rounded-full bg-lightteal md:text-base sm:text-sm text-xs text-white'>
-                Front End
+                {dict.badgeMain}
               </div>
-              <p className='text-xs sm:text-sm'>Developer</p>
+              <p className='text-xs sm:text-sm'>{dict.badgeSecondary}</p>
             </div>
             {/* Heading */}
             <h1
@@ -26,20 +31,18 @@ const Hero = () => {
             </h1>
             {/* Description */}
             <p className='dark:text-lightsage mb-4  text-size-14 sm:text-xl md:text-2xl font-medium leading-[2.5rem]'>
-              ¡Hola! Soy Estefania, desarrolladora Front End con experiencia en crear sitios web atractivos y funcionales. Me gusta con un enfoque en la usabilidad y el diseño, transformando ideas en experiencias digitales que realmente funcionen bien.
+              {dict.intro}
             </p>
             
             <p className='dark:text-lightsage mb-4  text-size-14 sm:text-xl md:text-2xl font-medium leading-[2.5rem]'>
-              Trabajo principalmente con HTML, CSS, JavaScript y React, y disfruto el proceso de hacer que cada proyecto sea único. ¡Hablemos de tu próximo proyecto!
+              {dict.stack}
             </p>
-            {/* Play store and app store images */}
-
           </div>
           {/* Image Content */}
           <div className='hidden lg:block' data-aos='fade-up' data-aos-delay='200' >
             <Image
               src="/images/me_02.jpg"
-              alt='Fotografía de Estefanía Osses Vera'
+              alt={dict.photoAlt}
               width={700}
               height={700}
               style={{borderRadius: '50%'}}

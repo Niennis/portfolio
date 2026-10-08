@@ -4,14 +4,16 @@ import { navLinks } from '@/constant/Constant'
 import Link from 'next/link'
 import { HiBars3BottomRight } from 'react-icons/hi2'
 import ThemeSwitch from '@/components/ThemeSwitch'
+import type { Dictionary } from '@/i18n/getDictionary'
 
 type Props = {
   openNav: () => void,
   showNav: boolean,
+  dict: Dictionary['nav'],
   menuButtonRef: React.RefObject<HTMLButtonElement | null>
 }
 
-const Nav = ({ openNav, showNav, menuButtonRef }: Props) => {
+const Nav = ({ openNav, showNav, menuButtonRef, dict }: Props) => {
 
   const [navBg, setNavBg] = useState(false)
 
@@ -37,24 +39,34 @@ const Nav = ({ openNav, showNav, menuButtonRef }: Props) => {
         </p>
         {/* NavLinks */}
         <div className='flex shrink-0 items-center space-x-3 sm:space-x-6 lg:space-x-10'>
-          <nav aria-label='Principal' className='hidden lg:block'>
+          <nav aria-label={dict.ariaLabel} className='hidden lg:block'>
             <ul className='flex items-center space-x-10'>
               {navLinks.map((link) => (
                 <li key={link.id}>
                   <Link href={link.url} className='nav__link'>
-                    {link.label}
+                    {dict.links[link.key]}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
-          <ThemeSwitch />
+          {/* Cambio de idioma: lang hace que el lector de pantalla lo pronuncie en ese idioma */}
+          <Link
+            href={`/${dict.switchLanguage.locale}`}
+            lang={dict.switchLanguage.locale}
+            hrefLang={dict.switchLanguage.locale}
+            aria-label={dict.switchLanguage.label}
+            className='nav__link font-semibold'
+          >
+            {dict.switchLanguage.short}
+          </Link>
+          <ThemeSwitch labels={{ toLight: dict.themeToLight, toDark: dict.themeToDark }} />
           {/* Burger menu */}
           <button
             ref={menuButtonRef}
             type='button'
             onClick={openNav}
-            aria-label='Abrir menú'
+            aria-label={dict.openMenu}
             aria-expanded={showNav}
             aria-controls='menu-movil'
             className='lg:hidden rounded-md'

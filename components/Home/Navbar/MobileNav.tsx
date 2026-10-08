@@ -2,13 +2,15 @@ import { navLinks } from '@/constant/Constant'
 import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { CgClose } from 'react-icons/cg'
+import type { Dictionary } from '@/i18n/getDictionary'
 
 type Props = {
   showNav: boolean,
-  closeNav: (returnFocus?: boolean) => void
+  closeNav: (returnFocus?: boolean) => void,
+  dict: Dictionary['nav']
 }
 
-const MobileNav = ({ showNav, closeNav }: Props) => {
+const MobileNav = ({ showNav, closeNav, dict }: Props) => {
 
   const navOpen = showNav ? 'translate-x-0' : 'translate-x-[-100%]'
   const closeButtonRef = useRef<HTMLButtonElement>(null)
@@ -57,7 +59,7 @@ const MobileNav = ({ showNav, closeNav }: Props) => {
       <nav
         ref={menuRef}
         id='menu-movil'
-        aria-label='Principal'
+        aria-label={dict.ariaLabel}
         inert={!showNav}
         className={`text-white ${navOpen} fixed top-0 left-0 justify-center flex flex-col h-full transform transition-all duration-500 delay-300 w-[80%] sm:w-[60%] bg-darkteal z-[10006]`}
       >
@@ -66,7 +68,7 @@ const MobileNav = ({ showNav, closeNav }: Props) => {
           ref={closeButtonRef}
           type='button'
           onClick={() => closeNav()}
-          aria-label='Cerrar menú'
+          aria-label={dict.closeMenu}
           className='absolute top-[0.7rem] right-[1.4rem] rounded-md focus-visible:outline-lightsage'
         >
           <CgClose aria-hidden='true' className='sm:w-8 sm:h-8 w-6 h-6' />
@@ -79,7 +81,7 @@ const MobileNav = ({ showNav, closeNav }: Props) => {
                 onClick={() => closeNav(false)}
                 className='nav__link text-white text-[20px] ml-12 border-b-[1.5px] pb-1 border-white sm:text-[30px] focus-visible:outline-lightsage'
               >
-                {link.label}
+                {dict.links[link.key]}
               </Link>
             </li>
           ))}
