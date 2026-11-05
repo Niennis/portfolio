@@ -181,6 +181,41 @@ const projectGroups: ProjectGroupSource[] = [
         ],
       },
       {
+        id: 'mi-dia',
+        img: '/images/midia.png',
+        content: {
+          es: {
+            name: 'Mi día',
+            subtitle: 'Organizador personal para Windows.',
+            desc: 'App de escritorio para organizar el día, pensada para quienes dejaron otros organizadores por tener demasiadas opciones. Se abre al iniciar Windows, muestra lo de hoy y queda en la bandeja del sistema; se anota con un atajo escribiendo con palabras, como "llamar al dentista el viernes 10:00". Construida con Tauri 2, React 19 y TypeScript, con los datos guardados solo en el computador (SQLite).',
+            features: [
+              'Captura rápida con atajo global y fechas en lenguaje natural',
+              'Vistas Día, Semana y Mes con bloques que se arrastran y estiran',
+              'Tareas con pasos, pomodoro y recordatorios',
+              'Accesible con teclado y lector de pantalla (WCAG 2.2 AA)',
+              'Tauri 2 + React 19 + TypeScript + SQLite, sin servidor ni cuenta',
+            ],
+          },
+          en: {
+            name: 'Mi día',
+            subtitle: 'Personal planner for Windows.',
+            desc: 'Desktop app to plan your day, designed for people who gave up on other planners because they had too many options. It opens when Windows starts, shows what is due today and then stays in the system tray; you add things with a shortcut by typing in plain Spanish, such as "llamar al dentista el viernes 10:00" (call the dentist on Friday at 10:00). Built with Tauri 2, React 19 and TypeScript, with data stored only on your computer (SQLite).',
+            features: [
+              'Quick capture with a global shortcut and natural-language dates',
+              'Day, Week and Month views with blocks you can drag and resize',
+              'Tasks with steps, Pomodoro timer and reminders',
+              'Keyboard and screen reader accessible (WCAG 2.2 AA)',
+              'Tauri 2 + React 19 + TypeScript + SQLite, no server or account',
+            ],
+          },
+        },
+        links: [
+          // "latest" apunta siempre al release más reciente, así el link no cambia con cada versión.
+          { label: { es: 'Descargar instalador', en: 'Download installer' }, url: 'https://github.com/Niennis/myday/releases/latest' },
+          { label: code, url: 'https://github.com/Niennis/myday' },
+        ],
+      },
+      {
         id: 'una-vuelta-mas',
         img: '/images/onemorerow.png',
         content: {
