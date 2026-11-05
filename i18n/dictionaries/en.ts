@@ -54,7 +54,6 @@ const en: Dictionary = {
   },
   footer: {
     role: 'Front End Developer',
-    linksLabel: 'Contact and social links',
     rights: 'All rights reserved.',
   },
 }

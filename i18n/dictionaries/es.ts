@@ -53,7 +53,6 @@ const es = {
   },
   footer: {
     role: 'Front End Developer',
-    linksLabel: 'Contacto y redes',
     rights: 'Todos los derechos reservados.',
   },
 }

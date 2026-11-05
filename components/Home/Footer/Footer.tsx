@@ -1,17 +1,10 @@
 import React from 'react'
-import { FaLinkedin, FaGithub } from 'react-icons/fa'
-import { IoMdMail } from 'react-icons/io'
+import { FaGithub } from 'react-icons/fa'
 import type { Dictionary } from '@/i18n/getDictionary'
 
 type Props = {
   dict: Dictionary['footer']
 }
-
-const links = [
-  { label: 'estefania.osses.v@gmail.com', url: 'mailto:estefania.osses.v@gmail.com', Icon: IoMdMail },
-  { label: 'linkedin/estefania-osses-vera', url: 'https://www.linkedin.com/in/estefania-osses-vera', Icon: FaLinkedin },
-  { label: 'github/Niennis', url: 'https://github.com/Niennis', Icon: FaGithub },
-]
 
 const Footer = ({ dict }: Props) => {
   // El año se calcula al generar la página, así el aviso no queda desactualizado
@@ -30,17 +23,11 @@ const Footer = ({ dict }: Props) => {
               {dict.role}
             </p>
           </div>
-          {/* Links */}
-          <ul aria-label={dict.linksLabel} className='flex flex-col gap-3 text-sm font-semibold md:flex-row md:flex-wrap md:gap-6'>
-            {links.map(({ label, url, Icon }) => (
-              <li key={url}>
-                <a href={url} className='inline-flex items-center gap-2 underline-offset-4 hover:text-white hover:underline [overflow-wrap:anywhere]'>
-                  <Icon aria-hidden='true' className='size-4 shrink-0' />
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Correo y LinkedIn están en la sección Contacto, justo arriba; aquí solo queda GitHub */}
+          <a href='https://github.com/Niennis' className='inline-flex w-fit items-center gap-2 text-sm font-semibold underline-offset-4 hover:text-white hover:underline'>
+            <FaGithub aria-hidden='true' className='size-4 shrink-0' />
+            github/Niennis
+          </a>
         </div>
         {/* Bottom section */}
         <div className='mt-8 border-t border-lightsage/20 pt-6 text-sm text-center md:text-left'>
