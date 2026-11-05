@@ -24,6 +24,16 @@ export default {
         sage: '#629584',
         lightsage: '#E2F1E7',
       },
+      // Entrada suave del proyecto al cambiar de pestaña (se desactiva con "reducir movimiento")
+      keyframes: {
+        'fade-up': {
+          from: { opacity: '0', transform: 'translateY(0.75rem)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.35s ease-out',
+      },
     },
   },
   darkMode: 'class',

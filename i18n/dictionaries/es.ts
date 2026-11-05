@@ -36,6 +36,7 @@ const es = {
     heading: 'Proyectos',
     newTab: '(se abre en una pestaña nueva)',
     screenshotAlt: 'Captura de pantalla del proyecto',
+    tech: 'Tecnologías',
   },
   skills: {
     heading: 'Tech Skills',

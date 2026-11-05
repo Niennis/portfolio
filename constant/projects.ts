@@ -18,6 +18,8 @@ type ProjectContent = {
 type ProjectSource = {
   id: string // Identificador único, sin espacios (se usa internamente para las pestañas)
   img: string // Ruta desde /public, por ejemplo '/images/proyecto.png'
+  kind?: 'web' | 'desktop' // Marco de la captura: navegador (por defecto) o ventana de escritorio
+  tech: string[] // Tecnologías principales: se muestran como etiquetas (no se traducen)
   content: Translated<ProjectContent>
   links: {
     label: Translated<string>
@@ -31,8 +33,8 @@ type ProjectGroupSource = {
   projects: ProjectSource[]
 }
 
-// Etiquetas de links que se repiten
-const demo = { es: 'Ver despliegue', en: 'Live demo' }
+// Etiquetas de links que se repiten. El primer link de cada proyecto se muestra como botón principal.
+const demo = { es: 'Ver sitio', en: 'Live demo' }
 const code = { es: 'Código en GitHub', en: 'Code on GitHub' }
 
 const projectGroups: ProjectGroupSource[] = [
@@ -43,6 +45,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'zerus',
         img: '/images/psm-publico.jpeg',
+        tech: ['Next.js 14', 'React 18', 'Material UI', 'Bootstrap'],
         content: {
           es: {
             name: 'Zerus',
@@ -72,15 +75,16 @@ const projectGroups: ProjectGroupSource[] = [
           },
         },
         links: [
-          { label: { es: 'Sitio público despliegue', en: 'Public site demo' }, url: 'https://psm-public.vercel.app/' },
-          { label: { es: 'Sitio público código', en: 'Public site code' }, url: 'https://github.com/Niennis/psm-public' },
-          { label: { es: 'Sitio privado despliegue', en: 'Private site demo' }, url: 'https://psm-private.vercel.app/' },
-          { label: { es: 'Sitio privado código', en: 'Private site code' }, url: 'https://github.com/Niennis/psm-private' },
+          { label: { es: 'Ver sitio público', en: 'Public site demo' }, url: 'https://psm-public.vercel.app/' },
+          { label: { es: 'Código del sitio público', en: 'Public site code' }, url: 'https://github.com/Niennis/psm-public' },
+          { label: { es: 'Ver portal privado', en: 'Private portal demo' }, url: 'https://psm-private.vercel.app/' },
+          { label: { es: 'Código del portal privado', en: 'Private portal code' }, url: 'https://github.com/Niennis/psm-private' },
         ],
       },
       {
         id: 'burger-queen',
         img: '/images/bakeryqueen.jpeg',
+        tech: ['React', 'Node.js', 'Express', 'MongoDB'],
         content: {
           es: {
             name: 'Burger Queen',
@@ -113,6 +117,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'labnotes',
         img: '/images/labnotes.jpeg',
+        tech: ['React', 'Firebase'],
         content: {
           es: {
             name: 'Labnotes',
@@ -147,6 +152,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'alerta-ofertas',
         img: '/images/avisodeofertas.png',
+        tech: ['Next.js 16', 'TypeScript', 'Drizzle ORM', 'Postgres (Neon)', 'Vitest'],
         content: {
           es: {
             name: 'Alerta de ofertas',
@@ -157,8 +163,6 @@ const projectGroups: ProjectGroupSource[] = [
               'Historial de precios y detección de ofertas dudosas',
               'Avisos por email con revisiones programadas (Vercel Cron + GitHub Actions)',
               'Cuentas con invitación y app instalable (PWA)',
-              'Next.js 16 + TypeScript + Drizzle ORM + Neon',
-              'Tests en Vitest',
             ],
           },
           en: {
@@ -170,8 +174,6 @@ const projectGroups: ProjectGroupSource[] = [
               'Price history and detection of misleading discounts',
               'Email alerts from scheduled checks (Vercel Cron + GitHub Actions)',
               'Invite-only accounts and installable app (PWA)',
-              'Next.js 16 + TypeScript + Drizzle ORM + Neon',
-              'Tests with Vitest',
             ],
           },
         },
@@ -183,6 +185,8 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'mi-dia',
         img: '/images/midia.png',
+        kind: 'desktop',
+        tech: ['Tauri 2', 'React 19', 'TypeScript', 'SQLite'],
         content: {
           es: {
             name: 'Mi día',
@@ -193,7 +197,7 @@ const projectGroups: ProjectGroupSource[] = [
               'Vistas Día, Semana y Mes con bloques que se arrastran y estiran',
               'Tareas con pasos, pomodoro y recordatorios',
               'Accesible con teclado y lector de pantalla (WCAG 2.2 AA)',
-              'Tauri 2 + React 19 + TypeScript + SQLite, sin servidor ni cuenta',
+              'Sin servidor ni cuenta: los datos quedan en el computador',
             ],
           },
           en: {
@@ -205,7 +209,7 @@ const projectGroups: ProjectGroupSource[] = [
               'Day, Week and Month views with blocks you can drag and resize',
               'Tasks with steps, Pomodoro timer and reminders',
               'Keyboard and screen reader accessible (WCAG 2.2 AA)',
-              'Tauri 2 + React 19 + TypeScript + SQLite, no server or account',
+              'No server or account: data stays on your computer',
             ],
           },
         },
@@ -218,6 +222,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'una-vuelta-mas',
         img: '/images/onemorerow.png',
+        tech: ['React 19', 'Vite', 'Tailwind CSS v4', 'Supabase', 'Vitest'],
         content: {
           es: {
             name: 'Una vuelta más',
@@ -228,8 +233,6 @@ const projectGroups: ProjectGroupSource[] = [
               'Fondo personalizable con contraste automático del texto',
               'Alarmas sintetizadas con Web Audio API',
               'Sincronización opcional con Supabase (Auth + Postgres + Storage)',
-              'React 19 + Vite + Tailwind CSS v4',
-              'Tests en Vitest',
             ],
           },
           en: {
@@ -241,8 +244,6 @@ const projectGroups: ProjectGroupSource[] = [
               'Custom background with automatic text contrast',
               'Alarms synthesized with the Web Audio API',
               'Optional sync with Supabase (Auth + Postgres + Storage)',
-              'React 19 + Vite + Tailwind CSS v4',
-              'Tests with Vitest',
             ],
           },
         },
@@ -254,6 +255,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'convida-tu-espacio',
         img: '/images/convidatuespacio.jpeg',
+        tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS'],
         content: {
           es: {
             name: 'Convida tu Espacio',
@@ -263,7 +265,6 @@ const projectGroups: ProjectGroupSource[] = [
               'Catálogo navegable con rutas dinámicas',
               'Galería de diseños',
               'Formulario de contacto',
-              'Next.js 15 + TypeScript + Tailwind CSS',
             ],
           },
           en: {
@@ -274,7 +275,6 @@ const projectGroups: ProjectGroupSource[] = [
               'Browsable catalog with dynamic routes',
               'Design gallery',
               'Contact form',
-              'Next.js 15 + TypeScript + Tailwind CSS',
             ],
           },
         },
@@ -286,6 +286,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'amigurumi',
         img: '/images/amigurumi.jpeg',
+        tech: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Vitest'],
         content: {
           es: {
             name: 'Generador de patrones de amigurumi',
@@ -295,8 +296,6 @@ const projectGroups: ProjectGroupSource[] = [
             features: [
               'Cálculo de aumentos y disminuciones',
               'Formas geométricas configurables',
-              'React 19 + TypeScript + Vite + Tailwind CSS v4',
-              'Tests en Vitest',
             ],
           },
           en: {
@@ -307,8 +306,6 @@ const projectGroups: ProjectGroupSource[] = [
             features: [
               'Calculates increases and decreases',
               'Configurable geometric shapes',
-              'React 19 + TypeScript + Vite + Tailwind CSS v4',
-              'Tests with Vitest',
             ],
           },
         },
@@ -320,6 +317,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'mi-biblioteca',
         img: '/images/mibiblioteca.jpeg',
+        tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Express', 'Prisma', 'Supabase', 'Vitest'],
         content: {
           es: {
             name: 'Mi Biblioteca',
@@ -327,9 +325,7 @@ const projectGroups: ProjectGroupSource[] = [
             desc: 'App fullstack para gestionar una biblioteca personal de libros, con autenticación, frontend en React 19 + TypeScript (Vite) y backend en Express + TypeScript con Prisma y Supabase.',
             features: [
               'CRUD de biblioteca personal con autenticación',
-              'Frontend: React 19 + TypeScript + Tailwind CSS',
-              'Backend: Express + TypeScript + Prisma + Supabase',
-              'Tests en Vitest en frontend y backend',
+              'Tests en frontend y backend',
             ],
           },
           en: {
@@ -338,9 +334,7 @@ const projectGroups: ProjectGroupSource[] = [
             desc: 'Full-stack app to manage a personal book library, with authentication, a React 19 + TypeScript (Vite) front end and an Express + TypeScript back end with Prisma and Supabase.',
             features: [
               'Personal library CRUD with authentication',
-              'Frontend: React 19 + TypeScript + Tailwind CSS',
-              'Backend: Express + TypeScript + Prisma + Supabase',
-              'Tests with Vitest on front end and back end',
+              'Tests on front end and back end',
             ],
           },
         },
@@ -359,6 +353,8 @@ export type ProjectLink = { label: string; url: string }
 export type Project = ProjectContent & {
   id: string
   img: string
+  kind: 'web' | 'desktop'
+  tech: string[]
   links: ProjectLink[]
 }
 
@@ -375,6 +371,8 @@ export const getProjectGroups = (locale: Locale): ProjectGroup[] =>
     projects: group.projects.map((project) => ({
       id: project.id,
       img: project.img,
+      kind: project.kind ?? 'web',
+      tech: project.tech,
       ...project.content[locale],
       links: project.links.map((link) => ({ label: link.label[locale], url: link.url })),
     })),

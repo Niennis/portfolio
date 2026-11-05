@@ -37,6 +37,7 @@ const en: Dictionary = {
     heading: 'Projects',
     newTab: '(opens in a new tab)',
     screenshotAlt: 'Screenshot of the project',
+    tech: 'Technologies',
   },
   skills: {
     heading: 'Tech Skills',

@@ -32,6 +32,19 @@ describe('Projects', () => {
     expect(getPanel()).toHaveAttribute('aria-labelledby', `tab-${target.id}`)
   })
 
+  it('shows the technologies and links of the selected project', () => {
+    render(<Projects groups={projectGroups} dict={es.projects} />)
+
+    const miDia = personalGroup.projects.find((project) => project.id === 'mi-dia')!
+    fireEvent.click(screen.getByRole('tab', { name: miDia.name }))
+
+    const techList = within(getPanel()).getByRole('list', { name: es.projects.tech })
+    expect(within(techList).getAllByRole('listitem').map((item) => item.textContent)).toEqual(miDia.tech)
+
+    expect(within(getPanel()).getByRole('link', { name: /Descargar instalador/ }))
+      .toHaveAttribute('href', 'https://github.com/Niennis/myday/releases/latest')
+  })
+
   it('moves between tabs of a group with the arrow keys, Home and End', () => {
     render(<Projects groups={projectGroups} dict={es.projects} />)
 
