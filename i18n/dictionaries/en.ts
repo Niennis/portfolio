@@ -47,9 +47,14 @@ const en: Dictionary = {
     main: 'Main stack',
     other: 'I have also worked with',
   },
+  contact: {
+    heading: "Let's talk",
+    message: "If you have a project, a job opening or an idea, write to me and let's talk.",
+    emailButton: 'Send me an email',
+  },
   footer: {
     role: 'Front End Developer',
-    contact: 'Contact',
+    linksLabel: 'Contact and social links',
     rights: 'All rights reserved.',
   },
 }

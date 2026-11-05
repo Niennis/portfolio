@@ -5,6 +5,7 @@ import {
   SiPostgresql, SiReact, SiSupabase, SiTailwindcss, SiTauri, SiTypescript, SiVitest,
 } from 'react-icons/si'
 import type { Dictionary } from '@/i18n/getDictionary'
+import SectionDivider from '../SectionDivider'
 
 type Props = {
   dict: Dictionary['skills']
@@ -40,9 +41,12 @@ const Feature = ({ dict }: Props) => {
     <section
       id='skills'
       aria-labelledby='skills-heading'
-      className='pt-20 pb-20 text-black bg-gradient-to-r from-sage to-lightsage dark:from-darkteal dark:to-gray-900 dark:text-lightsage'
+      className='relative pt-28 pb-32 md:pt-32 md:pb-40 text-black bg-gradient-to-r from-sage to-lightsage dark:from-darkteal dark:to-gray-900 dark:text-lightsage'
     >
-      <div className='w-[90%] sm:w-[80%] mx-auto text-center'>
+      {/* Ondas: arriba, del color de Proyectos; abajo, del color de Contacto */}
+      <SectionDivider position='top' colorClassName='text-lightsage dark:text-gray-900' />
+      <SectionDivider position='bottom' colorClassName='text-darkteal' />
+      <div className='relative w-[90%] sm:w-[80%] mx-auto text-center'>
         <h2 id='skills-heading' className='mt-6 text-2xl md:text-3xl font-bold dark:text-white playwrite-hu'>
           {dict.heading}
         </h2>

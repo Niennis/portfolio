@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import Hero from './Hero/Hero'
 import Projects from './Projects/Projects'
 import Feature from './Feature/Feature'
+import Contact from './Contact/Contact'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import type { Dictionary } from '@/i18n/getDictionary'
@@ -34,6 +35,7 @@ const Home = ({ dict, projectGroups }: Props) => {
       <Hero dict={dict.hero} />
       <Projects groups={projectGroups} dict={dict.projects} />
       <Feature dict={dict.skills} />
+      <Contact dict={dict.contact} />
     </div>
   );
 }

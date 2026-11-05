@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import type { Dictionary } from '@/i18n/getDictionary'
+import SectionDivider from '../SectionDivider'
 
 type Props = {
   dict: Dictionary['hero']
@@ -14,7 +15,7 @@ const socialLinks = [
 
 const Hero = ({ dict }: Props) => {
   return (
-    <section id='about' className='w-full pt-[calc(var(--nav-height)+1.5rem)] pb-12 min-h-screen flex flex-col justify-center
+    <section id='about' className='relative w-full pt-[calc(var(--nav-height)+1.5rem)] pb-24 md:pb-32 min-h-screen flex flex-col justify-center
      bg-gradient-to-l from-sage to-lightsage
      dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='w-[90%] sm:w-[80%] mx-auto'>
@@ -95,6 +96,8 @@ const Hero = ({ dict }: Props) => {
           </div>
         </div>
       </div>
+      {/* Onda del color de la sección Proyectos */}
+      <SectionDivider position='bottom' colorClassName='text-lightsage dark:text-gray-900' />
     </section>
   )
 }

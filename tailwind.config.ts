@@ -23,6 +23,7 @@ export default {
         lightteal: '#387478',
         sage: '#629584',
         lightsage: '#E2F1E7',
+        deepteal: '#0F2F39', // Fondo del footer, un tono más oscuro que darkteal
       },
       // Entrada suave del proyecto al cambiar de pestaña (se desactiva con "reducir movimiento")
       keyframes: {

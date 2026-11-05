@@ -46,9 +46,14 @@ const es = {
     main: 'Mi stack principal',
     other: 'También he trabajado con',
   },
+  contact: {
+    heading: '¿Conversamos?',
+    message: 'Si tienes un proyecto, una vacante o una idea, escríbeme y conversemos.',
+    emailButton: 'Escríbeme un correo',
+  },
   footer: {
     role: 'Front End Developer',
-    contact: 'Contacto',
+    linksLabel: 'Contacto y redes',
     rights: 'Todos los derechos reservados.',
   },
 }
