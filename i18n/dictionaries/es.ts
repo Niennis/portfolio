@@ -28,9 +28,12 @@ const es = {
   hero: {
     badgeMain: 'Front End',
     badgeSecondary: 'Developer',
-    intro: '¡Hola! Soy Estefania, desarrolladora Front End con experiencia en crear sitios web atractivos y funcionales. Me gusta con un enfoque en la usabilidad y el diseño, transformando ideas en experiencias digitales que realmente funcionen bien.',
-    stack: 'Trabajo principalmente con HTML, CSS, JavaScript y React, y disfruto el proceso de hacer que cada proyecto sea único. ¡Hablemos de tu próximo proyecto!',
+    intro: '¡Hola! Soy Estefania, desarrolladora Front End con experiencia en crear sitios web atractivos y funcionales. Me gusta trabajar con un enfoque en la usabilidad y el diseño, transformando ideas en experiencias digitales que realmente funcionen bien.',
+    stack: 'Trabajo principalmente con React, Next.js y JavaScript, y disfruto el proceso de hacer que cada proyecto sea único. ¡Hablemos de tu próximo proyecto!',
     photoAlt: 'Fotografía de Estefanía Osses Vera',
+    ctaProjects: 'Ver proyectos',
+    ctaContact: 'Contáctame',
+    socialLabel: 'Redes',
   },
   projects: {
     heading: 'Proyectos',

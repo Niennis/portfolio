@@ -1,10 +1,16 @@
 import Image from 'next/image'
 import React from 'react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import type { Dictionary } from '@/i18n/getDictionary'
 
 type Props = {
   dict: Dictionary['hero']
 }
+
+const socialLinks = [
+  { label: 'GitHub', url: 'https://github.com/Niennis', Icon: FaGithub },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/estefania-osses-vera', Icon: FaLinkedin },
+]
 
 const Hero = ({ dict }: Props) => {
   return (
@@ -25,28 +31,67 @@ const Hero = ({ dict }: Props) => {
             {/* Heading */}
             <h1
               data-aos='fade-up'
-              className='text-2xl sm:text-4xl md:text-5xl mt-6 mb-6 font-bold md:leading-[3rem] lg:leading-[3.5rem] playwrite-hu'
+              className='text-3xl sm:text-4xl md:text-5xl mt-6 mb-6 font-bold md:leading-[3rem] lg:leading-[3.5rem] playwrite-hu'
             >
               Estefanía Osses Vera
             </h1>
-            {/* Description */}
-            <p className='dark:text-lightsage mb-4  text-size-14 sm:text-xl md:text-2xl font-medium leading-[2.5rem]'>
+            {/* Description: la presentación destaca y el segundo párrafo la complementa */}
+            <p className='text-lg sm:text-xl md:text-2xl font-medium leading-relaxed text-gray-900 dark:text-lightsage'>
               {dict.intro}
             </p>
-            
-            <p className='dark:text-lightsage mb-4  text-size-14 sm:text-xl md:text-2xl font-medium leading-[2.5rem]'>
+            <p className='mt-4 text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-200'>
               {dict.stack}
             </p>
+
+            {/* Llamados a la acción */}
+            <div className='mt-8 flex flex-wrap items-center gap-3'>
+              <a
+                href='#projects'
+                className='inline-flex items-center px-6 py-3 rounded-full font-semibold border-2 border-darkteal bg-darkteal text-white shadow-md transition-colors duration-200 hover:bg-lightteal hover:border-lightteal dark:bg-lightsage dark:border-lightsage dark:text-darkteal dark:hover:bg-white dark:hover:border-white'
+              >
+                {dict.ctaProjects}
+              </a>
+              <a
+                href='#contact'
+                className='inline-flex items-center px-6 py-3 rounded-full font-semibold border-2 border-darkteal text-darkteal transition-colors duration-200 hover:bg-darkteal hover:text-white dark:border-lightsage dark:text-lightsage dark:hover:bg-lightsage dark:hover:text-darkteal'
+              >
+                {dict.ctaContact}
+              </a>
+              <ul aria-label={dict.socialLabel} className='flex gap-2 sm:ml-2'>
+                {socialLinks.map(({ label, url, Icon }) => (
+                  <li key={label}>
+                    <a
+                      href={url}
+                      aria-label={label}
+                      className='flex size-11 items-center justify-center rounded-full text-darkteal transition-colors duration-200 hover:bg-darkteal hover:text-white dark:text-lightsage dark:hover:bg-lightsage dark:hover:text-darkteal'
+                    >
+                      <Icon aria-hidden='true' className='size-6' />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          {/* Image Content */}
-          <div className='hidden lg:block' data-aos='fade-up' data-aos-delay='200' >
-            <Image
-              src="/images/me_02.jpg"
-              alt={dict.photoAlt}
-              width={700}
-              height={700}
-              style={{borderRadius: '50%'}}
-            />
+          {/* Image Content: forma orgánica detrás de la foto para darle profundidad */}
+          <div className='hidden lg:block' data-aos='fade-up' data-aos-delay='200'>
+            <div className='relative mx-auto w-full max-w-[34rem]'>
+              <div
+                aria-hidden='true'
+                className='absolute -inset-6 translate-x-5 translate-y-5 rotate-12 rounded-[58%_42%_47%_53%/45%_55%_45%_55%] bg-darkteal/30 dark:bg-sage/25'
+              />
+              <div
+                aria-hidden='true'
+                className='absolute -inset-2 -rotate-3 rounded-full border-2 border-dashed border-darkteal/40 dark:border-lightsage/40'
+              />
+              <Image
+                src='/images/me_02.jpg'
+                alt={dict.photoAlt}
+                width={700}
+                height={700}
+                priority
+                className='relative rounded-full shadow-2xl ring-8 ring-white/60 dark:ring-white/10'
+              />
+            </div>
           </div>
         </div>
       </div>

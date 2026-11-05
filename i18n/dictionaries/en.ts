@@ -30,8 +30,11 @@ const en: Dictionary = {
     badgeMain: 'Front End',
     badgeSecondary: 'Developer',
     intro: "Hi! I'm Estefania, a Front End developer with experience building attractive, functional websites. I focus on usability and design, turning ideas into digital experiences that truly work well.",
-    stack: "I work mainly with HTML, CSS, JavaScript and React, and I enjoy making every project unique. Let's talk about your next project!",
+    stack: "I work mainly with React, Next.js and JavaScript, and I enjoy making every project unique. Let's talk about your next project!",
     photoAlt: 'Photo of Estefanía Osses Vera',
+    ctaProjects: 'See projects',
+    ctaContact: 'Contact me',
+    socialLabel: 'Social links',
   },
   projects: {
     heading: 'Projects',
