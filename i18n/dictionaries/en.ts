@@ -44,6 +44,8 @@ const en: Dictionary = {
   },
   skills: {
     heading: 'Tech Skills',
+    main: 'Main stack',
+    other: 'I have also worked with',
   },
   footer: {
     role: 'Front End Developer',

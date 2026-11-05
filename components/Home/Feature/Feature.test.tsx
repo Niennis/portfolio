@@ -11,4 +11,15 @@ describe('Feature', () => {
  
     expect(heading).toBeInTheDocument()
   })
+
+  it('separates the main stack from other tools', () => {
+    render(<Feature dict={es.skills} />)
+
+    const [main, other] = screen.getAllByRole('list')
+    expect(screen.getByRole('heading', { level: 3, name: es.skills.main })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: es.skills.other })).toBeInTheDocument()
+    expect(main).toHaveTextContent('React')
+    expect(main).not.toHaveTextContent('TypeScript')
+    expect(other).toHaveTextContent('TypeScript')
+  })
 })

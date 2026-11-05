@@ -43,6 +43,8 @@ const es = {
   },
   skills: {
     heading: 'Tech Skills',
+    main: 'Mi stack principal',
+    other: 'También he trabajado con',
   },
   footer: {
     role: 'Front End Developer',
