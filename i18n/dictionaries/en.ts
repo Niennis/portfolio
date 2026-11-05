@@ -9,8 +9,8 @@ const en: Dictionary = {
   skipLink: 'Skip to main content',
   nav: {
     ariaLabel: 'Main',
+    logoLabel: 'Estefania, go to top',
     links: {
-      home: 'Home',
       about: 'About me',
       projects: 'Projects',
       skills: 'Skills',

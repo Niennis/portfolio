@@ -6,6 +6,13 @@ import es from '@/i18n/dictionaries/es'
 describe('ResponsiveNav', () => {
   const getMobileMenu = () => document.getElementById('menu-movil')
 
+  it('uses the logo as the link to the top instead of a "Home" link', () => {
+    render(<ResponsiveNav dict={es.nav} />)
+
+    expect(screen.getByRole('link', { name: es.nav.logoLabel })).toHaveAttribute('href', '#')
+    expect(screen.queryByRole('link', { name: 'Home' })).not.toBeInTheDocument()
+  })
+
   it('keeps the closed mobile menu out of keyboard and screen reader reach', () => {
     render(<ResponsiveNav dict={es.nav} />)
 

@@ -7,8 +7,8 @@ const es = {
   skipLink: 'Saltar al contenido principal',
   nav: {
     ariaLabel: 'Principal',
+    logoLabel: 'Estefania, ir al inicio',
     links: {
-      home: 'Home',
       about: 'Sobre mí',
       projects: 'Proyectos',
       skills: 'Habilidades',
