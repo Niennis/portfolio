@@ -18,7 +18,7 @@ type ProjectContent = {
 type ProjectSource = {
   id: string // Identificador único, sin espacios (se usa internamente para las pestañas)
   img: string // Ruta desde /public, por ejemplo '/images/proyecto.png'
-  kind?: 'web' | 'desktop' // Marco de la captura: navegador (por defecto) o ventana de escritorio
+  kind?: 'web' | 'desktop' | 'tablet' // Marco de la captura: navegador (por defecto), ventana de escritorio o tablet vertical
   tech: string[] // Tecnologías principales: se muestran como etiquetas (no se traducen)
   content: Translated<ProjectContent>
   links: {
@@ -84,6 +84,7 @@ const projectGroups: ProjectGroupSource[] = [
       {
         id: 'burger-queen',
         img: '/images/bakeryqueen.jpeg',
+        kind: 'tablet', // App pensada para usarse en una tablet en vertical
         tech: ['React', 'Node.js', 'Express', 'MongoDB'],
         content: {
           es: {
@@ -353,7 +354,7 @@ export type ProjectLink = { label: string; url: string }
 export type Project = ProjectContent & {
   id: string
   img: string
-  kind: 'web' | 'desktop'
+  kind: 'web' | 'desktop' | 'tablet'
   tech: string[]
   links: ProjectLink[]
 }

@@ -213,40 +213,55 @@ const Projects = ({ groups, dict }: Props) => {
               </div>
             </div>
 
-            {/* IMAGEN, dentro de un marco de navegador o de ventana de escritorio */}
-            <figure className='md:order-1 md:mt-6 md:sticky md:top-[calc(var(--nav-height)+1.5rem)] overflow-hidden rounded-xl bg-white shadow-xl ring-1 ring-black/10 dark:bg-gray-800 dark:ring-white/10 motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:shadow-2xl'>
-              <div aria-hidden='true' className='flex items-center gap-3 px-4 py-2.5 bg-gray-100 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-600'>
-                {selected.kind === 'desktop' ? (
-                  <>
-                    <span className='flex-1 truncate text-xs font-medium text-gray-700 dark:text-gray-200'>{selected.name}</span>
-                    <span className='flex gap-3 text-xs text-gray-600 dark:text-gray-300'>
-                      <span>&#x2013;</span><span>&#x25A1;</span><span>&#x2715;</span>
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className='flex gap-1.5'>
-                      <span className='size-3 rounded-full bg-[#ff5f57]' />
-                      <span className='size-3 rounded-full bg-[#febc2e]' />
-                      <span className='size-3 rounded-full bg-[#28c840]' />
-                    </span>
-                    {siteHost(selected.links) && (
-                      <span className='flex-1 truncate rounded-md bg-white px-3 py-0.5 text-center text-xs text-gray-700 dark:bg-gray-800 dark:text-gray-200'>
-                        {siteHost(selected.links)}
+            {/* IMAGEN, dentro de un marco: tablet vertical, ventana de escritorio o navegador */}
+            {selected.kind === 'tablet' ? (
+              <figure className='md:order-1 md:mt-6 md:sticky md:top-[calc(var(--nav-height)+1.5rem)] mx-auto w-full max-w-[18rem] sm:max-w-[21rem] rounded-[2rem] bg-gray-900 p-3 sm:p-4 shadow-xl ring-1 ring-black/20 dark:ring-white/15 motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:shadow-2xl'>
+                {/* Cámara frontal de la tablet */}
+                <span aria-hidden='true' className='mx-auto mb-2 sm:mb-3 block size-2 rounded-full bg-gray-600' />
+                <Image
+                  src={selected.img}
+                  alt={`${dict.screenshotAlt} ${selected.name}`}
+                  width={1152}
+                  height={1676}
+                  sizes='(min-width: 40em) 21rem, 18rem'
+                  className='w-full h-auto rounded-lg'
+                />
+              </figure>
+            ) : (
+              <figure className='md:order-1 md:mt-6 md:sticky md:top-[calc(var(--nav-height)+1.5rem)] overflow-hidden rounded-xl bg-white shadow-xl ring-1 ring-black/10 dark:bg-gray-800 dark:ring-white/10 motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:shadow-2xl'>
+                <div aria-hidden='true' className='flex items-center gap-3 px-4 py-2.5 bg-gray-100 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-600'>
+                  {selected.kind === 'desktop' ? (
+                    <>
+                      <span className='flex-1 truncate text-xs font-medium text-gray-700 dark:text-gray-200'>{selected.name}</span>
+                      <span className='flex gap-3 text-xs text-gray-600 dark:text-gray-300'>
+                        <span>&#x2013;</span><span>&#x25A1;</span><span>&#x2715;</span>
                       </span>
-                    )}
-                  </>
-                )}
-              </div>
-              <Image
-                src={selected.img}
-                alt={`${dict.screenshotAlt} ${selected.name}`}
-                width={1600}
-                height={1000}
-                sizes='(min-width: 48em) 45vw, 95vw'
-                className='w-full h-auto max-h-[28rem] object-cover object-top'
-              />
-            </figure>
+                    </>
+                  ) : (
+                    <>
+                      <span className='flex gap-1.5'>
+                        <span className='size-3 rounded-full bg-[#ff5f57]' />
+                        <span className='size-3 rounded-full bg-[#febc2e]' />
+                        <span className='size-3 rounded-full bg-[#28c840]' />
+                      </span>
+                      {siteHost(selected.links) && (
+                        <span className='flex-1 truncate rounded-md bg-white px-3 py-0.5 text-center text-xs text-gray-700 dark:bg-gray-800 dark:text-gray-200'>
+                          {siteHost(selected.links)}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </div>
+                <Image
+                  src={selected.img}
+                  alt={`${dict.screenshotAlt} ${selected.name}`}
+                  width={1600}
+                  height={1000}
+                  sizes='(min-width: 48em) 45vw, 95vw'
+                  className='w-full h-auto max-h-[28rem] object-cover object-top'
+                />
+              </figure>
+            )}
           </div>
         </div>
       </div>
