@@ -19,7 +19,7 @@ const Hero = ({ dict }: Props) => {
      bg-gradient-to-l from-sage to-lightsage
      dark:bg-gradient-to-r dark:from-darkteal dark:to-gray-900'>
       <div className='w-[90%] sm:w-[80%] mx-auto'>
-        <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-12'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12'>
           {/* Text Content */}
           <div>
             {/* Top Box */}
@@ -73,16 +73,17 @@ const Hero = ({ dict }: Props) => {
               </ul>
             </div>
           </div>
-          {/* Image Content: forma orgánica detrás de la foto para darle profundidad */}
-          <div className='hidden lg:block' data-aos='fade-up' data-aos-delay='200'>
-            <div className='relative mx-auto w-full max-w-[34rem]'>
+          {/* Image Content: forma orgánica detrás de la foto para darle profundidad.
+              En celular y tablet va arriba del texto y más pequeña; en PC, a la derecha */}
+          <div className='order-first lg:order-none' data-aos='fade-up' data-aos-delay='200'>
+            <div className='relative ml-2 w-40 sm:w-52 lg:mx-auto lg:w-full lg:max-w-[34rem]'>
               <div
                 aria-hidden='true'
-                className='absolute -inset-6 translate-x-5 translate-y-5 rotate-12 rounded-[58%_42%_47%_53%/45%_55%_45%_55%] bg-darkteal/30 dark:bg-sage/25'
+                className='absolute -inset-3 translate-x-2 translate-y-2 lg:-inset-6 lg:translate-x-5 lg:translate-y-5 rotate-12 rounded-[58%_42%_47%_53%/45%_55%_45%_55%] bg-darkteal/30 dark:bg-sage/25'
               />
               <div
                 aria-hidden='true'
-                className='absolute -inset-2 -rotate-3 rounded-full border-2 border-dashed border-darkteal/40 dark:border-lightsage/40'
+                className='absolute -inset-1.5 lg:-inset-2 -rotate-3 rounded-full border-2 border-dashed border-darkteal/40 dark:border-lightsage/40'
               />
               <Image
                 src='/images/me_02.jpg'
@@ -90,7 +91,8 @@ const Hero = ({ dict }: Props) => {
                 width={700}
                 height={700}
                 priority
-                className='relative rounded-full shadow-2xl ring-8 ring-white/60 dark:ring-white/10'
+                sizes='(min-width: 64em) 34rem, 13rem'
+                className='relative rounded-full shadow-2xl ring-4 lg:ring-8 ring-white/60 dark:ring-white/10'
               />
             </div>
           </div>
